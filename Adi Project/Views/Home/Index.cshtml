@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProjectPetShop.Models.Animal>
+
+@{
+    ViewBag.Title = "Most Reviewed Animals";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title = Animal </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    @section section1
+    {
+        <h2>@ViewBag.Title</h2>
+    }
+    @section section2
+    {
+        <div class="container mt-3">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center align-middle">Name</th>
+                        <th class="text-center align-middle">Age</th>
+                        <th class="text-center align-middle">Picture</th>
+                        <th class="text-center align-middle">Description</th>
+                        <th class="text-center align-middle">Category</th>
+                        <th class="text-center align-middle">Comments Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var animal in Model)
+                    {
+                        <tr>
+                            <td class="text-center align-middle fw-bold">@animal.Name</td>
+                            <td class="text-center align-middle fw-bold">@animal.Age</td>
+                            <td><img src="@animal.PictureName" alt="@animal.Name" width="100" /></td>
+                            <td class="fw-bold">@animal.Description</td>
+                            <td class="text-center align-middle fw-bold">@animal.Category!.CategoryName</td>
+                            <td class="text-center align-middle fw-bold">@animal.Comments!.Count</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</body>
+</html>

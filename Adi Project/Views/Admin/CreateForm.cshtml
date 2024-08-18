@@ -1,0 +1,79 @@
+﻿@model ProjectPetShop.Models.Animal
+
+@{
+    ViewBag.Title = "Create Animal";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Animal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2>Create Animal</h2>
+            @using (Html.BeginForm("Create", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="mb-3">
+                    <label for="animalName" class="form-label"><strong>Animal Name</strong></label>
+                    <input type="text" class="form-control" id="animalName" name="Name" placeholder="Enter animal name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label"><strong>Age</strong></label>
+                    <input type="number" class="form-control" id="age" name="Age" placeholder="Enter age" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pictureName" class="form-label"><strong>Picture</strong></label>
+                    <input type="file" class="form-control" id="pictureName" name="nameOfPicure" accept="image/*">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label"><strong>Description</strong></label>
+                    <textarea class="form-control" id="description" name="Description" rows="3" placeholder="Enter description" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="categoryId" class="form-label"><strong>Select a category:</strong></label>
+                    <select id="categoryId" name="CategoryId" class="form-select" required>
+                        <option value="">Animal's category</option>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.CategoryId">@category.CategoryName</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Insert</button>
+            }
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery validation script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                // קבלת הערך מהשדה "Age"
+                var age = parseInt($('input[name="Age"]').val().trim());
+
+                // בדיקה אם הערך מחוץ לטווח המותר
+                if (isNaN(age) || age < 0 || age > 90) {
+                    alert('Age must be between 0 and 90.');
+                    event.preventDefault(); // עצור את שליחת הטופס
+                }
+            });
+        });
+    </script>
+</body>
+</html>

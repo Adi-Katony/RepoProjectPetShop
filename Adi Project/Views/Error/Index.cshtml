@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Error";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .error-image {
+            display: block;
+            width: 300px;
+            height: 250px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>@ViewBag.Message</h2>
+    </header>
+    <main>
+        <img src="https://cdn.vectorstock.com/i/1000v/35/78/zoo-entrance-outdoor-view-with-different-cartoon-vector-27783578.jpg" alt="Zoo Entrance" class="error-image">
+        @Html.ActionLink("Back to Home page", "Index", "Home")
+    </main>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Game Projects\**" />
+    <Compile Remove="LEARNINGS AND PROJECTS\**" />
+    <Compile Remove="UNI SHEET\**" />
+    <Compile Remove="חומר קריאה\**" />
+    <Compile Remove="לפודקאדסט\**" />
+    <Compile Remove="מ-ו-ז-י-ק-ה\**" />
+    <Compile Remove="מסמכים\**" />
+    <Compile Remove="תרגילים\**" />
+    <Content Remove="Game Projects\**" />
+    <Content Remove="LEARNINGS AND PROJECTS\**" />
+    <Content Remove="UNI SHEET\**" />
+    <Content Remove="חומר קריאה\**" />
+    <Content Remove="לפודקאדסט\**" />
+    <Content Remove="מ-ו-ז-י-ק-ה\**" />
+    <Content Remove="מסמכים\**" />
+    <Content Remove="תרגילים\**" />
+    <EmbeddedResource Remove="Game Projects\**" />
+    <EmbeddedResource Remove="LEARNINGS AND PROJECTS\**" />
+    <EmbeddedResource Remove="UNI SHEET\**" />
+    <EmbeddedResource Remove="חומר קריאה\**" />
+    <EmbeddedResource Remove="לפודקאדסט\**" />
+    <EmbeddedResource Remove="מ-ו-ז-י-ק-ה\**" />
+    <EmbeddedResource Remove="מסמכים\**" />
+    <EmbeddedResource Remove="תרגילים\**" />
+    <None Remove="Game Projects\**" />
+    <None Remove="LEARNINGS AND PROJECTS\**" />
+    <None Remove="UNI SHEET\**" />
+    <None Remove="חומר קריאה\**" />
+    <None Remove="לפודקאדסט\**" />
+    <None Remove="מ-ו-ז-י-ק-ה\**" />
+    <None Remove="מסמכים\**" />
+    <None Remove="תרגילים\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+</Project>

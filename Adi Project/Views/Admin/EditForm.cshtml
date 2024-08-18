@@ -1,0 +1,85 @@
+﻿@model ProjectPetShop.Models.Animal
+@{
+    ViewBag.Title = "Edit Animal Data";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Animal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto; 
+            padding: 20px; 
+            border: 1px solid #ddd;
+            border-radius: 0.5rem; 
+            background-color: #f9f9f9; 
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2>Edit the @Model.Name's Data</h2>
+            @using (@Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+       {
+            <input type="hidden" name="AnimalId" value="@Model.AnimalId" />
+            <div class="mb-3">
+                <label for="animalName" class="form-label"><strong>Animal Name</strong></label>
+                <input type="text" value="@Model.Name" class="form-control" id="animalName" name="Name" placeholder="Enter animal name" required>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label"><strong>Age</strong></label>
+                <input type="number" value="@Model.Age" class="form-control" id="age" name="Age" placeholder="Enter age" required>
+            </div>
+            <div class="mb-3">
+                <label for="pictureName" class="form-label"><strong>Picture</strong></label>
+                @if (!string.IsNullOrEmpty(Model.PictureName))
+                {
+                    <div class="mb-2">
+                        <img src="~/@Model.PictureName" alt="@Model.Name" width="240" class="img-thumbnail">
+                    </div>
+                }
+                <input type="file" class="form-control" id="pictureName" name="pictureName" accept="image/*" value="~/@Model.PictureName">
+                <small class="form-text text-muted">Upload a new picture if you want to replace the current one.</small>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label"><strong>Description</strong></label>
+                <textarea class="form-control" id="description" name="Description" rows="3" placeholder="Enter description" required>@Model.Description</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="categoryId" class="form-label"><strong>Select a category:</strong></label>
+                <select id="categoryId" name="CategoryId" class="form-select" required>
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.CategoryId" @(category.CategoryId == Model.CategoryId ? "selected" : "")>@category.CategoryName</option>
+                    }
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        }
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery validation script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                // קבלת הערך מהשדה "Age"
+                var age = parseInt($('input[name="Age"]').val().trim());
+
+                // בדיקה אם הערך מחוץ לטווח המותר
+                if (isNaN(age) || age < 0 || age > 90) {
+                    alert('Age must be between 0 and 90.');
+                    event.preventDefault(); // עצור את שליחת הטופס
+                }
+            });
+        });
+    </script>
+</body>
+</html>
